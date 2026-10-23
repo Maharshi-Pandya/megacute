@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "megacute"
+version = "0.1.0"
+description = "Persistent megakernels for transformer and diffusion graphs, written entirely in CuTe DSL (Blackwell sm100)."
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.10",
+    "nvidia-cutlass-dsl==4.8.0",
+    "apache-tvm-ffi",
+    "torch-c-dlpack-ext",
+]
+
+[project.optional-dependencies]
+llama = ["transformers", "safetensors", "huggingface_hub"]     # examples/llama: checkpoint, tokenizer, --check
+
+[tool.setuptools.packages.find]
+include = ["megacute*"]

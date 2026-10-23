@@ -1,0 +1,12 @@
+out/
+__pycache__/
+*.pyc
+
+# local-only: run setup, logs, scratch
+tools/
+logs/
+run.py
+harness.py
+probes/
+benchmarks/
+tests/

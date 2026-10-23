@@ -227,3 +227,16 @@ once per step. Compare with a reference implementation -- e.g. greedy tokens aga
 - Decode: all sequences of a batch share one position (synchronous batch); contiguous
   per-sequence KV cache (zero-initialised; max_seq a multiple of 128).
 - No MoE, sliding-window attention or paged KV cache yet. Forward only.
+
+## Acknowledgements
+
+megacute is a CuTe DSL take on ideas from [HazyResearch](https://github.com/HazyResearch):
+
+- [MegaKittens](https://github.com/HazyResearch/Megakernels): the megakernel design that megacute
+  follows. That covers instruction-level scheduling of a whole operator graph into one persistent
+  kernel, the controller / loader / compute / storer warp roles over a shared page pool, and
+  global-memory counters for cross-SM dependencies. Its Llama decode work shaped megacute's decode path.
+- [ThunderKittens](https://github.com/HazyResearch/ThunderKittens): the tile-based kernel
+  abstractions MegaKittens is built on.
+
+Thanks to the HazyResearch team for open-sourcing both.
